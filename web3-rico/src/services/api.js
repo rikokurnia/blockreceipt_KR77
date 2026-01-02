@@ -1,7 +1,7 @@
 // src/services/api.js
 
 const API_BASE_URL =
-  "https://web3-receipt-backend-production.up.railway.app/api";
+  import.meta.env.VITE_GEMINI_API_URL || "http://localhost:3001/api";
 
 const fetchData = async (endpoint) => {
   try {
