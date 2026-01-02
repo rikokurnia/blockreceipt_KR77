@@ -1,0 +1,44 @@
+# --- LOGS & SYSTEM ---
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- DEPENDENCIES (Global) ---
+# Ini akan meng-ignore node_modules di root DAN di dalam folder backend
+node_modules/
+
+# --- BUILD OUTPUTS ---
+dist/
+dist-ssr/
+build/
+.next/
+
+# --- ENVIRONMENT VARIABLES (CRITICAL) ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Khusus Backend
+web3-receipt-backend/.env
+web3-receipt-backend/prisma/dev.db
+web3-receipt-backend/prisma/dev.db-journal
+
+# --- IDE/EDITOR ---
+.vscode/*
+!.vscode/extensions.json
+.idea
+
+# --- PRISMA ---
+/generated/prisma
