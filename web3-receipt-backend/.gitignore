@@ -3,3 +3,4 @@ node_modules
 .env
 
 /generated/prisma
+\n# Temporary development files\nprisma.config.ts.bak\ntest-db.js

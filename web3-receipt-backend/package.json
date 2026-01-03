@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "npx ts-node src/server.ts",
+    "dev": "npx dotenv -- npx ts-node src/server.ts",
+    "build": "echo 'No build step needed for ts-node'"
   },
   "keywords": [],
   "author": "",
@@ -15,17 +15,22 @@
     "@prisma/client": "^6.19.0",
     "cors": "^2.8.5",
     "decimal.js": "^10.6.0",
+    "dotenv-cli": "^11.0.0",
     "express": "^5.1.0",
-    "multer": "^2.0.2"
+    "multer": "^2.0.2",
+    "pg": "^8.16.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
-    "@types/node": "^24.10.4",
+    "@types/node": "^24.10.1",
     "dotenv": "^17.2.3",
     "nodemon": "^3.1.11",
     "prisma": "^6.19.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

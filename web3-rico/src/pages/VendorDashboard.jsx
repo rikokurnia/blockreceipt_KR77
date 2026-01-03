@@ -70,7 +70,7 @@ const VendorDashboard = () => {
         setActiveAgreements(active);
 
         // 3. Map Payment History (Receipts)
-        const history = receiptsData
+        const history = (receiptsData.data || [])
             .filter(r => r.status === 'verified')
             .map(r => ({
                 id: `PAY-${r.id.slice(-4)}`,

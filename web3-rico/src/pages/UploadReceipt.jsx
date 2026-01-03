@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import gsap from "gsap"; // Tetap import untuk animasi simple
@@ -156,7 +156,7 @@ const UploadReceipt = () => {
   const calculateGrandTotal = () => calculateSubtotal() + Number(formData.taxAmount);
 
   // --- VALIDATION CORE LOGIC ---
-  const performValidation = () => {
+  const performValidation = useCallback(() => {
     if (!agreementData || !formData) {
       setValidationResults(null);
       return;
@@ -172,7 +172,7 @@ const UploadReceipt = () => {
     // 1. Price Match (Toleransi 5jt)
     const invoiceTotal = calculateGrandTotal();
     const agreementTotal = agreementData.totalValue;
-    if (Math.abs(invoiceTotal - agreementTotal) > 5000000) { 
+    if (Math.abs(invoiceTotal - agreementTotal) > 1000) { 
       results.priceMatch = {
         valid: false,
         message: `Mismatch! Agreement: ${formatCurrency(agreementTotal)} vs Invoice: ${formatCurrency(invoiceTotal)}`,
@@ -181,12 +181,15 @@ const UploadReceipt = () => {
         results.priceMatch = { valid: true, message: "✅ Price Match Verified" };
     }
 
-    // 2. Quantity (Mock Logic: Pass if > 0)
+    // 2. Quantity Check
     const requestedQty = formData.items.reduce((acc, i) => acc + i.quantity, 0);
-    if(requestedQty > 0) {
-        results.qtyAvailable = { valid: true, message: "✅ Quantity Available" };
+    if(requestedQty > agreementData.totalQuantity) {
+        results.qtyAvailable = { 
+            valid: false, 
+            message: `Exceeds available quantity! Requested: ${requestedQty} > Available: ${agreementData.totalQuantity}` 
+        };
     } else {
-        results.qtyAvailable = { valid: false, message: "❌ Invalid Quantity" };
+        results.qtyAvailable = { valid: true, message: "✅ Quantity Available" };
     }
 
     // 3. Period
@@ -223,14 +226,14 @@ const UploadReceipt = () => {
     }
 
     setValidationResults(results);
-  };
+  }, [formData, agreementData, dailyLimits]);
 
   useEffect(() => {
     // Jalankan validasi setiap kali data berubah
     if (isInvoiceUploaded && agreementData) {
       performValidation();
     }
-  }, [formData, agreementData, isInvoiceUploaded]);
+  }, [isInvoiceUploaded, agreementData, performValidation]);
 
   // AI SCANNING
   const scanReceiptWithAI = async (imageFile) => {
@@ -397,7 +400,14 @@ const UploadReceipt = () => {
     }
   };
 
-  const isSubmitDisabled = !selectedAgreement || !isInvoiceUploaded || isSubmitting;
+
+  const isSubmitDisabled = !selectedAgreement || 
+                             !isInvoiceUploaded || 
+                             isSubmitting || 
+                             !validationResults ||
+                             !validationResults.qtyAvailable.valid ||
+                             !validationResults.contractValid.valid;
+
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#050A14] text-slate-300 p-6 md:p-12 selection:bg-cyan-500/30">
