@@ -1,0 +1,27 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "BlockReceipt",
+    "homeUrl": "https://blockreceipt-kr-77.vercel.app",
+    "iconUrl": "https://blockreceipt-kr-77.vercel.app/icon.png",
+    "splashImageUrl": "https://blockreceipt-kr-77.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "webhookUrl": "https://blockreceipt-kr-77.vercel.app/api/webhook",
+    "subtitle": "Blockchain-Based Receipt Management",
+    "description": "Secure, transparent, and efficient receipt management system powered by blockchain technology with Web3 integration.",
+    "screenshotUrls": [],
+    "primaryCategory": "utility",
+    "tags": ["blockchain", "web3", "receipt", "finance", "utility"],
+    "heroImageUrl": "https://blockreceipt-kr-77.vercel.app/hero.png",
+    "tagline": "Secure Receipt Management on Blockchain",
+    "ogTitle": "BlockReceipt - Web3 Receipt Management",
+    "ogDescription": "Secure, transparent receipt management powered by blockchain technology",
+    "ogImageUrl": "",
+    "noindex": false
+  }
+}
