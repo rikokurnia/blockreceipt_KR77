@@ -1,8 +1,8 @@
 {
   "accountAssociation": {
-    "header": "",
-    "payload": "",
-    "signature": ""
+    "header": "eyJmaWQiOjIzMDczNDIsInR5cGUiOiJhdXRoIiwia2V5IjoiMHhBM0EzMTg5MjZiOTJEMDJmZkEzREMyYzQwNTRhOUJlYTVkZTRkZjFDIn0",
+    "payload": "eyJkb21haW4iOiJibG9ja3JlY2VpcHQta3ItNzcudmVyY2VsLmFwcCJ9",
+    "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEFfI-PkpdLvs30xHnNbkF_ri_mFmEdNjFd3HOcNjBov0AA0Hgqy4nNxVky5tyyIGCMuy9g_wFTbZp3gXsDA5FwHHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
   },
   "miniapp": {
     "version": "1",
@@ -16,7 +16,13 @@
     "description": "Secure, transparent, and efficient receipt management system powered by blockchain technology with Web3 integration.",
     "screenshotUrls": [],
     "primaryCategory": "utility",
-    "tags": ["blockchain", "web3", "receipt", "finance", "utility"],
+    "tags": [
+      "blockchain",
+      "web3",
+      "receipt",
+      "finance",
+      "utility"
+    ],
     "heroImageUrl": "https://blockreceipt-kr-77.vercel.app/hero.png",
     "tagline": "Secure Receipt Management on Blockchain",
     "ogTitle": "BlockReceipt - Web3 Receipt Management",
